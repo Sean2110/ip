@@ -40,7 +40,7 @@ public class PooPoo {
                 taskList.add(new Deadline(deadline, by));
                 System.out.println("Okiee I've added the deadline!! Make sure you do it by then!");
             } else if (command.startsWith("todo")) {
-                // todo
+                // todos
                 int toDoPosition = command.indexOf("todo");
                 String toDo = command.substring(toDoPosition);
                 taskList.add(new ToDo(toDo));
