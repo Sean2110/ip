@@ -31,7 +31,32 @@ public class PooPoo {
                 taskList.get(index - 1).markAsDone();
                 // sucessfully marked as done.
                 System.out.println("Thank you! I have marked it as done! Good job!");
-            } else {
+            } else if (command.startsWith("deadline")) {
+                // deadline
+                int deadlinePosition = command.indexOf(" ");
+                int byPosition = command.indexOf("/by");
+                String deadline = command.substring(deadlinePosition, byPosition).trim();
+                String by = command.substring(byPosition + 3).trim();
+                taskList.add(new Deadline(deadline, by));
+                System.out.println("Okiee I've added the deadline!! Make sure you do it by then!");
+            } else if (command.startsWith("todo")) {
+                // todo
+                int toDoPosition = command.indexOf("todo");
+                String toDo = command.substring(toDoPosition);
+                taskList.add(new ToDo(toDo));
+                System.out.println("Okiee I've added the todo!!");
+            } else if (command.startsWith("event")) {
+                // event
+                int eventPosition = command.indexOf(" ");
+                int fromPosition = command.indexOf("/from");
+                int toPosition = command.indexOf("/to");
+                String event = command.substring(eventPosition, fromPosition).trim();
+                String from = command.substring(fromPosition + 5, toPosition).trim();
+                String to = command.substring(toPosition + 3).trim();
+                taskList.add(new Event(event, from, to));
+                System.out.println("Okiee I've added the event!! All the best!");
+            }
+            else {
                 // add new task
                 taskList.add(new Task(command));
                 System.out.print("added ");
