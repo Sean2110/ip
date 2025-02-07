@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class PooPoo {
     public static ArrayList<Task> taskList = new ArrayList<>(100);
+
     public static void main(String[] args) {
         String Name = "PooPoo";
         String Ask = "How can I help you?";
@@ -55,8 +56,7 @@ public class PooPoo {
                 String to = command.substring(toPosition + 3).trim();
                 taskList.add(new Event(event, from, to));
                 System.out.println("Okiee I've added the event!! All the best!");
-            }
-            else {
+            } else {
                 // add new task
                 taskList.add(new Task(command));
                 System.out.print("added ");
