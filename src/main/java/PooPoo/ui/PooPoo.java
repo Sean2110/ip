@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class PooPoo {
     public static ArrayList<Task> taskList = new ArrayList<>(100);
 
-    public static void task(String command) throws PooPooException {
+    public static void handleTask(String command) throws PooPooException {
         if (command.equalsIgnoreCase("list")) {
             // list all tasks
             for (int i = 1; i <= taskList.size(); i++) {
@@ -22,11 +22,10 @@ public class PooPoo {
             taskList.get(index - 1).markAsDone();
             // successfully marked as done.
             System.out.println("Thank you! I have marked it as done! Good job!");
-
         } else if (command.startsWith("deadline")) {
             // deadline
             int deadlinePosition = command.indexOf(" ");
-            int byPosition = command.indexOf("/by");
+            int byPosition = command.indexOf("/y");
             String deadline = command.substring(deadlinePosition, byPosition).trim();
             String by = command.substring(byPosition + 3).trim();
             taskList.add(new Deadline(deadline, by));
@@ -47,6 +46,13 @@ public class PooPoo {
             String to = command.substring(toPosition + 3).trim();
             taskList.add(new Event(event, from, to));
             System.out.println("Okiee I've added the event!! All the best!");
+        } else if (command.startsWith("delete")) {
+            //delete
+            String[] tokens = command.split(" ");
+            int deleteIndex = Integer.parseInt(tokens[1]) - 1;
+            System.out.println("Okiee I've removed this task: \n" + taskList.get(deleteIndex));
+            taskList.remove(deleteIndex);
+            System.out.println("You have " + taskList.size() + " remaining tasks left! All the best!");
         } else {
             // exceptions
             throw new PooPooException();
@@ -70,7 +76,7 @@ public class PooPoo {
                 break;
             }
             try {
-            task(commands);
+                handleTask(commands);
             } catch (PooPooException e) {
                 System.out.println("I don't understand T~T");
             } catch (IndexOutOfBoundsException e) {
