@@ -25,7 +25,5 @@ public class TaskList {
         taskList.get(taskIndex - 1).markAsDone();
     }
 
-    public ArrayList<Task> getAllTasks() {
-        return taskList;
     }
 }
