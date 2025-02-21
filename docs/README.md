@@ -1,4 +1,4 @@
-# PooPoo.ui.PooPoo User Guide
+# PooPoo.PooPoo User Guide
 
 // Update the title above to match the actual product name
 
