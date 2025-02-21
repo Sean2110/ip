@@ -21,4 +21,12 @@ public class Task {
     public void markAsDone() {
         this.isDone = true;
     }
+
+    public boolean isDone() {
+        return isDone;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
 }
