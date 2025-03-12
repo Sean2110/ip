@@ -11,13 +11,14 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.ArrayList;
 
 public class Storage {
     public static ArrayList<Task> taskList = new ArrayList<>(100);
 
     public static void saveTasks(TaskList tasks) {
         try {
-            Storage.saveTaskList(tasks,"data/PooPoo.txt");
+            Storage.saveTaskList(tasks, "data/PooPoo.txt");
         } catch (IOException e) {
             System.err.println("Error saving tasks: " + e.getMessage());
         }
@@ -124,6 +125,10 @@ public class Storage {
         }
 
         return tasks;
+    }
+
+    public void markTask(int taskIndex) {
+        taskList.get(taskIndex - 1).markAsDone();
     }
 
 }
