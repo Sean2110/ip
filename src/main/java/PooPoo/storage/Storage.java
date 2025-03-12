@@ -1,49 +1,41 @@
-package PooPoo.ui;
+package PooPoo.storage;
 
+import PooPoo.tasklist.*;
+import PooPoo.ui.Ui;
+
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.io.FileWriter;
-import java.io.File;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class TaskList {
-    public ArrayList<Task> taskList = new ArrayList<>(100);
+public class Storage {
+    public static ArrayList<Task> taskList = new ArrayList<>(100);
 
-    public void addTask(Task task) {
-        taskList.add(task);
-    }
-
-    public void removeTask(int index) {
-        System.out.println("Okiee I've removed this task: \n" + taskList.get(index));
-        taskList.remove(index);
-        System.out.println("You have " + taskList.size() + " remaining tasks left! All the best!");
-    }
-
-    public void listTask() {
-        for (int i = 1; i <= taskList.size(); i++) {
-            System.out.println(i + ". " + taskList.get(i - 1).toString());
+    public static void saveTasks(TaskList tasks) {
+        try {
+            Storage.saveTaskList(tasks,"data/PooPoo.txt");
+        } catch (IOException e) {
+            System.err.println("Error saving tasks: " + e.getMessage());
         }
     }
 
-    public void markTask(int taskIndex) {
-        taskList.get(taskIndex - 1).markAsDone();
-    }
-
-    public void saveTaskList(String filePath) throws IOException {
+    public static void saveTaskList(TaskList tasks, String filePath) throws IOException {
         File file = new File(filePath);
         file.getParentFile().mkdirs();
         FileWriter save = new FileWriter(file);
         // for loop to fw.write(task in string representation)
-        for (Task task : taskList) {
+        for (Task task : tasks.getTaskList()) {
             save.write(task.toString() + "\n");
         }
         save.close();
     }
 
-    public void restoreTaskList(String filePath) {
+    public static TaskList restoreTaskList(String filePath) {
+        TaskList tasks = new TaskList();
         File store = new File(filePath);
         // create a File for the given file path
         // If the file doesn't exist, create the necessary directories and an empty file.
@@ -55,7 +47,7 @@ public class TaskList {
                 store.createNewFile();
             } catch (IOException e) {
                 System.err.println("Error creating new file: " + filePath);
-                return;
+                return tasks;
             }
         }
 
@@ -124,10 +116,14 @@ public class TaskList {
                 if (task != null && isDone) {
                     task.markAsDone();
                 }
-                addTask(task);
+
+                tasks.addTask(task);
             }
         } catch (FileNotFoundException e) {
-            System.err.println("Error: File not found - " + filePath);
+            Ui.showFileNotFoundException();
         }
+
+        return tasks;
     }
+
 }

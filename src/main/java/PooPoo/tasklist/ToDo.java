@@ -1,4 +1,4 @@
-package PooPoo.ui;
+package PooPoo.tasklist;
 
 public class ToDo extends Task{
 
