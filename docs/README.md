@@ -1,30 +1,131 @@
-# PooPoo.PooPoo User Guide
+# PooPoo User Guide
 
-// Update the title above to match the actual product name
+![image](./Product.png)
 
-// Product screenshot goes here
-
-// Product intro goes here
+PooPoo is a simple chatbot that helps you manage your tasks efficiently. You can add tasks, list them, mark them as done, delete tasks, and save your progress.
 
 ## Adding deadlines
 
-// Describe the action and its outcome.
+Add a task with a deadline to the task list.
 
-// Give examples of usage
+Format: deadline DESCRIPTION /by DEADLINE
 
-Example: `keyword (optional arguments)`
+Example: `deadline finish ip /by 14 March 2025`
 
-// A description of the expected outcome goes here
+A short message will tell the user that the deadline is added to the tasklist.
 
 ```
-expected output
+Okiee I've added the deadline!! Make sure you do it by then!
 ```
 
-## Feature ABC
+## Adding events
 
-// Feature details
+Add a task with a specific start event date and end date to the task list.
 
+Format: event DESCRIPTION /from START_DATE /to END_DATE
 
-## Feature XYZ
+Example: `event finish coding /from now /to when I retire`
 
-// Feature details
+A short message will tell the user that the event is added to the tasklist.
+
+```
+Okiee I've added the event!! All the best!
+```
+
+## Adding todos
+
+Add a task without a deadline to the task list.
+
+Format: todo DESCRIPTION
+
+Example: `todo assignments`
+
+A short message will tell the user that the task has been added to the tasklist.
+
+```
+Okiee I've added the todo!!
+```
+
+## Listing tasks
+
+List all tasks in the task list.
+
+Format: list
+
+Example: `list`
+
+A list of tasks will be shown.
+
+```
+1. [D][ ] finish ip (by: 14 March 2025)
+2. [E][ ] finish coding (from: now to: when I retire)
+3. [T][ ] assignments
+```
+
+## Deleting tasks
+
+Delete a task from the task list. Task number can be found by using the list command.
+
+Format: delete TASK_NUMBER
+
+Example: `delete 1`
+
+A short message will be shown to show that the task has been deleted from the tasklist.
+
+```
+Okiee I've removed this task: 
+[D][ ] finish ip (by: 14 March 2025)
+You have 2 remaining tasks left! All the best!
+```
+
+## Marking tasks
+
+Mark a task as done/undone in the task list. Task number can be found by using the list command.
+
+Format: mark TASK_NUMBER
+
+Example: `mark 1`
+
+A short message will be shown to show that the task has been marked as done/undone in the tasklist.
+
+```
+Thank you! I have marked it as done! Good job!
+```
+
+## Finding tasks
+
+Find tasks that contain a specific keyword. Tasks that contain the keyword would be shown.
+
+Format: find KEYWORD
+
+Example: `find coding`
+
+A list of tasks that contain the keyword would be shown.
+
+```
+These are the matching tasks in the list!: 
+
+1. [E][X] finish coding (from: now to: when I retire)
+```
+
+## Exiting the program
+
+Exit the program.
+
+Format: bye
+
+Example: `bye`
+
+A short message will be shown, then the program will exit. 
+
+```
+Bye! Hope to see you again!
+```
+
+## Saving the data
+
+Task list data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+
+## Editing the data file
+
+Task list data is saved as a text file data/tasks.txt. Advanced users are welcome to update data directly by editing that data file.

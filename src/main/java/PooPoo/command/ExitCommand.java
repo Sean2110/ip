@@ -22,4 +22,9 @@ public class ExitCommand extends Command {
         Ui.showBye();
     }
 
+    @Override
+    public boolean isExit() {
+        return true;
+    }
+
 }
