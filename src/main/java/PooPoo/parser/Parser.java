@@ -28,6 +28,8 @@ public class Parser {
                 return new EventCommand(eventParts[0], eventParts[1], eventParts[2]);
             case "delete":
                 return new DeleteCommand(Integer.parseInt(tokens[1]));
+            case "find":
+                return new FindCommand(tokens[1]);
             case "bye":
                 return new ExitCommand();
             default:

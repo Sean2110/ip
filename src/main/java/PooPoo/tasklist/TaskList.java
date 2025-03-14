@@ -30,6 +30,14 @@ public class TaskList {
         }
     }
 
+    public static void findTask(String description) {
+        for (int i = 0; i < TaskList.getSize(); i++) {
+            if (taskList.get(i).toString().contains(description)) {
+                Ui.showTask(i + 1);
+            }
+        }
+    }
+
     public static void markTask(int taskIndex) {
         taskList.get(taskIndex - 1).markAsDone();
     }
