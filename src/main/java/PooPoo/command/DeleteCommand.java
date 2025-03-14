@@ -13,7 +13,7 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws PooPooException {
+    public void execute(TaskList tasks, Ui ui, Storage storage) {
         ui.showDelete(index);
         tasks.deleteTask(index);
         ui.showRemainingTask();

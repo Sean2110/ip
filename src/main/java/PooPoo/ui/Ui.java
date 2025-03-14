@@ -60,6 +60,10 @@ public class Ui {
         System.out.println(index + ". " + TaskList.getTask(index).toString());
     }
 
+    public static void showFind() {
+        System.out.println("These are the matching tasks in the list!: \n");
+    }
+
     public static String readCommand () {
         return new Scanner(System.in).nextLine();
     }
