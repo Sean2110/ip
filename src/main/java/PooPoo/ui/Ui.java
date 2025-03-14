@@ -110,6 +110,10 @@ public class Ui {
      *
      * @return The user input as a string.
      */
+    public static void showFind() {
+        System.out.println("These are the matching tasks in the list!: \n");
+    }
+
     public static String readCommand () {
         return new Scanner(System.in).nextLine();
     }

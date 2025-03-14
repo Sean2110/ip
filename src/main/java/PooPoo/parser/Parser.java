@@ -45,6 +45,8 @@ public class Parser {
             case "delete":
                 // Parses the index and returns a command to delete the task.
                 return new DeleteCommand(Integer.parseInt(tokens[1]));
+            case "find":
+                return new FindCommand(tokens[1]);
             case "bye":
                 // Returns a command that signals program termination.
                 return new ExitCommand();
